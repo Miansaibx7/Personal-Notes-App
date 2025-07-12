@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.name }}</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.content.label }}
+        {{ form.content(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+
+<hr>
+<h4>Your Notes:</h4>
+{% for note in notes %}
+    <div class="card my-2">
+        <div class="card-body">
+            <p>{{ note.content }}</p>
+            <a href="{{ url_for('notes.edit_note', id=note.id) }}" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="{{ url_for('notes.delete_note', id=note.id) }}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

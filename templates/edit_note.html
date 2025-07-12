@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Edit Note{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Edit Note</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}
+            </div>
+
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+
+        <a href="{{ url_for('notes.dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
